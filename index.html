@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Aid FAQ - Get Your Money! 💰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563EB;
+            --accent-teal: #14B8A6;
+            --warm-orange: #F59E0B;
+            --soft-purple: #8B5CF6;
+            --deep-navy: #1E293B;
+            --light-bg: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --success-green: #10B981;
+            --alert-red: #EF4444;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            position: relative;
+            overflow: hidden;
+            background: white;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-purple));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stat-banner {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            animation: popIn 0.6s ease-out backwards;
+        }
+
+        .stat:nth-child(1) { animation-delay: 0.4s; }
+        .stat:nth-child(2) { animation-delay: 0.5s; }
+        .stat:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stat-number {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section headers */
+        .section-header {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin: 4rem 0 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+        }
+
+        /* Quick nav */
+        .quick-nav {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        .quick-nav h2 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--deep-navy);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: var(--light-bg);
+            border: 2px solid var(--primary-blue);
+            padding: 1rem;
+            border-radius: 12px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        .nav-button:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        /* FAQ Cards */
+        .faq-card {
+            background: white;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .faq-card.myth {
+            border-left: 5px solid var(--alert-red);
+        }
+
+        .faq-card.tip {
+            border-left: 5px solid var(--success-green);
+        }
+
+        .faq-card.warning {
+            border-left: 5px solid var(--warm-orange);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+        }
+
+        .question-icon {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-card.active .question-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-card.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .answer-content {
+            padding: 0 2rem 2rem;
+            line-height: 1.8;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-purple));
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .money-emoji {
+            color: var(--warm-orange);
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--soft-purple));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 40px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Application checklist */
+        .checklist {
+            background: rgba(16, 185, 129, 0.08);
+            border: 2px solid var(--success-green);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .check-icon {
+            font-size: 1.5rem;
+            color: var(--success-green);
+            flex-shrink: 0;
+        }
+
+        /* Resources grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-card {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .resource-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 2px solid var(--primary-blue);
+            margin-top: 5rem;
+            background: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stat-banner {
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: reveal 0.6s ease-out forwards;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <div class="header-badge">💰 FREE MONEY ALERT 💰</div>
+        <h1>Financial Aid FAQ</h1>
+        <p class="subtitle">Stop leaving thousands on the table. Get the money that's already yours.</p>
+        
+        <div class="stat-banner">
+            <div class="stat">
+                <span class="stat-number">$10K+</span>
+                <span class="stat-label">Average aid per student</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">30 min</span>
+                <span class="stat-label">To complete application</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">$$$</span>
+                <span class="stat-label">Millions unclaimed yearly</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Quick Navigation -->
+        <section class="quick-nav reveal">
+            <h2>🚀 Jump to:</h2>
+            <div class="nav-grid">
+                <a href="#myths" class="nav-button">💥 Busting Myths</a>
+                <a href="#which-app" class="nav-button">📝 Which Application?</a>
+                <a href="#maximize" class="nav-button">💎 Maximize Your Aid</a>
+                <a href="#stay-eligible" class="nav-button">✅ Stay Eligible</a>
+                <a href="#financial-wellness" class="nav-button">🚀 Financial Wellness</a>
+                <a href="#apply-now" class="nav-button">⚡ Apply Now</a>
+            </div>
+        </section>
+
+        <!-- Top Misconceptions -->
+        <section id="myths">
+            <h2 class="section-header">💥 Myth-Busting Time</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Let's destroy the myths keeping you from claiming your money.</p>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"I'm not eligible for financial aid"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ WRONG.</strong> This is the #1 myth that costs students thousands. You don't know until you apply!</p>
+                        <p style="margin-top: 1rem;">Most students qualify for <em>at least one</em> of these:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li><strong>FAFSA</strong> - Federal & state grants</li>
+                            <li><strong>CADAA</strong> - For undocumented students</li>
+                            <li><strong>CCPG</strong> - Tuition waiver for CA residents</li>
+                            <li><strong>Free College</strong> - San Mateo County residents</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(37, 99, 235, 0.08); border-left: 4px solid var(--primary-blue); border-radius: 8px;"><strong>Real talk:</strong> Even if you have a job, savings, or think your family makes "too much," you still might qualify. The application is FREE. Take 30 minutes and find out.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"My grades aren't good enough"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ FALSE.</strong> Financial aid is NOT just for straight-A students!</p>
+                        <p style="margin-top: 1rem;">Most aid programs are based on <strong>financial need</strong>, not GPA. Even if you've struggled academically, you can still qualify for grants and scholarships.</p>
+                        <p style="margin-top: 1rem;"><strong>FYI:</strong> To <em>keep</em> receiving aid, you need a 2.0 GPA and pass 67% of your units. But to <em>get</em> aid initially? Your grades don't matter for most programs.</p>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 8px;">Had academic issues? There's often an appeal process. Don't count yourself out before trying!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"My parents make too much money"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ NOT NECESSARILY.</strong> Income isn't the only factor!</p>
+                        <p style="margin-top: 1rem;">Here's what people don't realize:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Some grants and scholarships <strong>aren't based on income</strong></li>
+                            <li>Family size matters (more siblings = more aid potential)</li>
+                            <li>Multiple kids in college = higher aid eligibility</li>
+                            <li>Special circumstances can be appealed</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); border-radius: 8px;"><strong>The only way to know for sure?</strong> Complete the FAFSA or CADAA. You might be shocked by what you qualify for.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"Community college is free, so I don't need aid"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ HALF-TRUE, TOTALLY MISLEADING.</strong></p>
+                        <p style="margin-top: 1rem;">Yes, you might qualify for free <em>tuition</em>. But financial aid covers WAY MORE than just tuition:</p>
+                        <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--alert-red); border-radius: 8px;">
+                            <p><strong>Financial aid can pay for:</strong></p>
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>📚 <strong>Books & supplies</strong> ($500-1000+/semester)</li>
+                                <li>🚗 <strong>Transportation</strong> (gas, bus passes)</li>
+                                <li>💻 <strong>Technology</strong> (laptop, internet, software)</li>
+                                <li>🏠 <strong>Housing & rent</strong></li>
+                                <li>🍕 <strong>Food</strong></li>
+                                <li>👶 <strong>Childcare</strong></li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Bottom line:</strong> Even with free tuition, students are getting <span class="highlight">$10,000+</span> in aid to cover all the other costs of going to school. Don't leave it on the table!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"I work/have savings, so I don't need it"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ BAD LOGIC.</strong> Why would you turn down free money?!</p>
+                        <p style="margin-top: 1rem;">Here's the smart move: <strong>Get financial aid AND keep your job/savings.</strong></p>
+                        <p style="margin-top: 1rem;">Use aid for school expenses, save your earnings for:</p>
+                        <ul style="margin-left: 2rem;">
+                            <li>Building an emergency fund</li>
+                            <li>Investing in your future</li>
+                            <li>Reducing work hours so you can focus on school</li>
+                            <li>Quality of life improvements</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(20, 184, 166, 0.08); border-left: 4px solid var(--accent-teal); border-radius: 8px;"><strong>Pro tip:</strong> Check out Free College Level 2 - it's designed for students who work. You can use aid to cover costs while keeping your income for yourself!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"I live on my own, so I'm independent"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--warm-orange)">⚠️ TRICKY.</strong> "Independent" has a specific meaning for financial aid.</p>
+                        <p style="margin-top: 1rem;">Just because you support yourself doesn't automatically make you independent for FAFSA purposes. You're considered independent if you meet ONE of these criteria:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>24 years or older</li>
+                            <li>Married</li>
+                            <li>Have legal dependents you support</li>
+                            <li>Veteran or active military</li>
+                            <li>Orphan/ward of the court/foster care (past age 13)</li>
+                            <li>Emancipated minor</li>
+                            <li>Homeless or at risk of homelessness</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Don't fit these?</strong> You can still apply for a dependency override if you have unusual circumstances. Talk to the Financial Aid Office - they can help!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card myth">
+                <div class="faq-question">
+                    <span class="question-text">"I need at least 6 units to get Pell Grant"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--alert-red)">❌ NOPE!</strong> You can get Pell Grant even taking just 1 unit.</p>
+                        <p style="margin-top: 1rem;">Pell Grants are based on <strong>"enrollment intensity"</strong> - basically, you get paid proportionally:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>3 units = 25% of full Pell amount</li>
+                            <li>6 units = 50% of full Pell amount</li>
+                            <li>9 units = 75% of full Pell amount</li>
+                            <li>12+ units = 100% of full Pell amount</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>BUT HEADS UP:</strong> If you're taking less than 6 units, you might miss out on:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>SEOG (extra grant money)</li>
+                            <li>Federal Work-Study</li>
+                            <li>Student Success Completion Grant</li>
+                            <li>Federal loans</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 8px;">Talk to your financial aid technician about your unit load and how it affects your total package!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Which Application Section -->
+        <section id="which-app">
+            <h2 class="section-header">📝 Which Application Do I Need?</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Not sure where to start? Here's your guide:</p>
+
+            <div class="resources-grid">
+                <div class="resource-card" style="border-color: var(--primary-blue);">
+                    <div class="resource-title">🇺🇸 FAFSA</div>
+                    <div class="resource-description">
+                        <strong>For:</strong> U.S. Citizens, Green Card holders, Refugees, Asylees
+                        <br><br>
+                        <strong>Gets you:</strong> Federal grants, state grants (Cal Grant), institutional aid
+                        <br><br>
+                        <strong>Time:</strong> ~30 minutes
+                        <br><br>
+                        <a href="https://studentaid.gov/h/apply-for-aid/fafsa" style="color: var(--electric-blue); font-weight: 700;">Start FAFSA →</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" style="border-color: var(--soft-purple);">
+                    <div class="resource-title" style="color: var(--soft-purple);">🌟 CADAA</div>
+                    <div class="resource-description">
+                        <strong>For:</strong> Undocumented students, DACA recipients, U Visa, TPS
+                        <br><br>
+                        <strong>Gets you:</strong> State aid (Cal Grant), institutional aid
+                        <br><br>
+                        <strong>Time:</strong> ~30 minutes
+                        <br><br>
+                        <a href="https://dream.csac.ca.gov/" style="color: var(--soft-purple); font-weight: 700;">Start CADAA →</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" style="border-color: var(--success-green);">
+                    <div class="resource-title">🎓 CCPG</div>
+                    <div class="resource-description">
+                        <strong>For:</strong> All eligible California residents
+                        <br><br>
+                        <strong>Gets you:</strong> Tuition waiver (saves $46/unit!)
+                        <br><br>
+                        <strong>Note:</strong> Doesn't cover student life fees or books
+                        <br><br>
+                        <a href="https://www.skylinecollege.edu/financialaid/feewaiver.php" style="color: var(--success-green); font-weight: 700;">Learn about CCPG →</a>
+                    </div>
+                </div>
+
+                <div class="resource-card" style="border-color: var(--warm-orange);">
+                    <div class="resource-title" style="color: var(--warm-orange);">🆓 Free College</div>
+                    <div class="resource-description">
+                        <strong>For:</strong> San Mateo County residents (including undocumented)
+                        <br><br>
+                        <strong>Gets you:</strong> 2 levels of support to reduce/eliminate fees
+                        <br><br>
+                        <strong>Requirement:</strong> Must pursue a certificate or degree
+                        <br><br>
+                        <a href="https://smccd.edu/freecollege" style="color: var(--warm-orange); font-weight: 700;">Check Free College →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip" style="margin-top: 2rem;">
+                <div class="faq-question">
+                    <span class="question-text">💡 Pro Tip: Apply for everything you qualify for!</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Don't limit yourself! Many students qualify for multiple programs. For example:</p>
+                        <ul style="margin-left: 2rem; margin-top: 1rem;">
+                            <li>You can get <strong>FAFSA + CCPG + Free College</strong></li>
+                            <li>You can get <strong>CADAA + CCPG + Free College</strong></li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Each application takes about 30 minutes. That's potentially <span class="highlight">$10,000+ per hour</span> of your time. Best investment you'll ever make!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Facts -->
+        <section>
+            <h2 class="section-header">⚡ Key Facts You Need to Know</h2>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">⏰ When should I apply?</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>Best time:</strong> November - March (priority deadline)</p>
+                        <p style="margin-top: 1rem;"><strong>But listen:</strong> Even if you miss the "priority" deadline, <span class="highlight">STILL APPLY!</span> Aid is available year-round, and it's always better to apply late than never.</p>
+                        <p style="margin-top: 1rem;"><strong>Important:</strong> You must apply <em>every year</em>. Each application covers one academic year (July-July).</p>
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 8px;">
+                            <strong>Mark these dates:</strong>
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Priority deadline (usually March 2)</li>
+                                <li>Census dates (when enrollment is locked)</li>
+                                <li>Disbursement dates (when you get paid)</li>
+                                <li>Add/drop deadlines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card warning">
+                <div class="faq-question">
+                    <span class="question-text">⚠️ "I submitted my application, I'm done!"</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong style="color: var(--warm-orange);">NOT SO FAST!</strong> Submitting ≠ Getting aid</p>
+                        <p style="margin-top: 1rem;">Here's what actually happens after you submit:</p>
+                        <ol style="margin-left: 2rem; margin-top: 1rem;">
+                            <li><strong>Application processing</strong> (1-3 days)</li>
+                            <li><strong>You might need to submit documents</strong> (tax forms, verification, etc.)</li>
+                            <li><strong>Financial Aid Office reviews your file</strong></li>
+                            <li><strong>You get an award letter</strong> (if eligible)</li>
+                            <li><strong>You accept your aid</strong></li>
+                            <li><strong>Money gets disbursed</strong> (after census date)</li>
+                        </ol>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--alert-red); border-radius: 8px;">
+                            <strong>Critical step:</strong> Check your email AND your FAFSA/CADAA account regularly. Missing a document request = delayed aid or no aid!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">💰 How do I actually get my money?</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>After aid is awarded:</strong></p>
+                        <ol style="margin-left: 2rem; margin-top: 1rem;">
+                            <li>School deducts your tuition/fees first</li>
+                            <li>Leftover money = refund to YOU</li>
+                            <li>Refund sent via <strong>BankMobile</strong> or school refund system</li>
+                            <li>You choose: direct deposit or paper check</li>
+                        </ol>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); border-radius: 8px;">
+                            <strong>Set up your refund account ASAP!</strong> Don't wait until disbursement. Getting this set up early means you get your money faster.
+                        </p>
+                        <p style="margin-top: 1rem;"><strong>When you get it:</strong> Usually around census date (3-4 weeks into the semester). But only if you've completed all requirements!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card warning">
+                <div class="faq-question">
+                    <span class="question-text">📛 Common mistakes that delay your aid</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Don't be that student! Avoid these mistakes:</p>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="check-icon">❌</span>
+                                <div>
+                                    <strong>Using a nickname instead of legal name</strong><br>
+                                    Use the EXACT name on your Social Security card or government ID. "Mike" ≠ "Michael"
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">❌</span>
+                                <div>
+                                    <strong>Wrong birth date or Social Security number</strong><br>
+                                    Triple-check these! One wrong digit = major delays
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">❌</span>
+                                <div>
+                                    <strong>Not checking email or student portal</strong><br>
+                                    Check DAILY after submitting. Financial Aid might need documents!
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">❌</span>
+                                <div>
+                                    <strong>Not listed in a degree/certificate program</strong><br>
+                                    Federal aid requires you be working toward a credential. Confirm with counselor!
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">❌</span>
+                                <div>
+                                    <strong>Thinking "submitted" = "done"</strong><br>
+                                    Follow up! Contact Financial Aid to confirm everything is complete
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Maximize Aid -->
+        <section id="maximize">
+            <h2 class="section-header">💎 How to Maximize Your Aid</h2>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🎯 Stack your grants!</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Many students don't realize you can get <strong>multiple grants at once:</strong></p>
+                        <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); border-radius: 8px;">
+                            <strong>Example combo:</strong>
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Pell Grant: $7,395/year (max)</li>
+                                <li>Cal Grant: $1,656/year</li>
+                                <li>Student Success Completion Grant: $4,000/year</li>
+                                <li>Scholarships: $500-5,000+/year</li>
+                            </ul>
+                            <p style="margin-top: 1rem;"><strong>Total potential:</strong> <span class="highlight">$13,000+/year</span> in free money!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">📚 More units = More money</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Most grants are based on enrollment intensity:</p>
+                        <ul style="margin-left: 2rem; margin-top: 1rem;">
+                            <li>6 units = 50% of max aid</li>
+                            <li>9 units = 75% of max aid</li>
+                            <li><strong>12+ units = 100% of max aid</strong></li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Plus, full-time students (12+ units) qualify for additional programs like:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Promise Program (extra support + priority registration)</li>
+                            <li>EOPS (Extended Opportunity Programs & Services)</li>
+                            <li>TRiO (tutoring, counseling, transfer support)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🆘 Special circumstances? Appeal!</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Your aid is NOT set in stone. You can appeal if:</p>
+                        <ul style="margin-left: 2rem; margin-top: 1rem;">
+                            <li>Parent or student lost job</li>
+                            <li>Income significantly decreased since tax year</li>
+                            <li>Medical emergency or expenses</li>
+                            <li>Death of parent/spouse</li>
+                            <li>Divorce or separation</li>
+                            <li>Other unusual circumstances</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 8px;">
+                            <strong>Don't suffer in silence!</strong> Talk to the Financial Aid Office. They have processes to help students in difficult situations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">💼 Federal Work-Study = Money + Experience</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>What it is:</strong> Part-time jobs on campus where the government helps pay your wages</p>
+                        <p style="margin-top: 1rem;"><strong>Benefits:</strong></p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Earn money for school expenses</li>
+                            <li>Flexible hours around your class schedule</li>
+                            <li>Work on campus (no commute!)</li>
+                            <li>Build your resume</li>
+                            <li>Network with faculty and staff</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Requirements:</strong> Usually need to be enrolled at least 6 units and demonstrate financial need</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🎓 Financial aid opens doors to MORE opportunities</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Having FAFSA/CADAA on file often makes you eligible for:</p>
+                        <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(20, 184, 166, 0.08); border-left: 4px solid var(--accent-teal); border-radius: 8px;">
+                            <ul style="margin-left: 2rem;">
+                                <li><strong>Promise Program</strong> - Extra grants, priority registration, counseling</li>
+                                <li><strong>EOPS</strong> - Book vouchers, counseling, transfer support</li>
+                                <li><strong>TRiO</strong> - Tutoring, study skills, university tours</li>
+                                <li><strong>SparkPoint</strong> - Financial coaching, food assistance</li>
+                                <li><strong>Internships & Research</strong> - Many require FAFSA on file</li>
+                                <li><strong>Scholarships</strong> - Most scholarship applications ask for FAFSA/CADAA</li>
+                                <li><strong>Apprenticeships</strong> - Career training programs</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Bottom line:</strong> Completing financial aid isn't just about money - it's your ticket to a whole support system!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stay Eligible -->
+        <section id="stay-eligible">
+            <h2 class="section-header">✅ How to Stay Eligible (SAP)</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Getting aid is one thing. Keeping it? Here's what you need to know about Satisfactory Academic Progress (SAP).</p>
+
+            <div class="faq-card warning">
+                <div class="faq-question">
+                    <span class="question-text">📊 What is SAP and why does it matter?</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>SAP = Satisfactory Academic Progress</strong></p>
+                        <p style="margin-top: 1rem;">To keep getting financial aid, you must meet these standards:</p>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Maintain a 2.0 GPA or higher</strong><br>
+                                    Overall GPA, not just one semester
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Pass at least 67% of units you attempt</strong><br>
+                                    Example: Take 12 units? Must pass at least 8 units
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Complete your degree within 150% of normal time</strong><br>
+                                    For 60-unit degree: can attempt up to 90 units total
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card warning">
+                <div class="faq-question">
+                    <span class="question-text">⚠️ What counts against you?</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>These all hurt your SAP:</strong></p>
+                        <ul style="margin-left: 2rem; margin-top: 1rem;">
+                            <li><strong>F grades</strong> - Failed classes count against your GPA and completion rate</li>
+                            <li><strong>W grades</strong> - Withdrawals count as "attempted but not completed"</li>
+                            <li><strong>NP (No Pass)</strong> - Same as F for SAP purposes</li>
+                            <li><strong>I (Incomplete)</strong> - Counts as not completed until you finish</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--alert-red); border-radius: 8px;">
+                            <strong>Real talk:</strong> It's better to pass with a C than withdraw and get a W. Plan ahead and use tutoring/support services if you're struggling!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🆘 What if I lose SAP eligibility?</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>Don't panic - you can appeal!</strong></p>
+                        <p style="margin-top: 1rem;">Valid reasons for appeal include:</p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Serious illness or injury</li>
+                            <li>Death of immediate family member</li>
+                            <li>Severe personal or family crisis</li>
+                            <li>Other documented extenuating circumstances</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Appeal process:</strong></p>
+                        <ol style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Contact Financial Aid Office immediately</li>
+                            <li>Submit appeal with documentation</li>
+                            <li>Create an academic plan with your counselor</li>
+                            <li>Wait for appeal decision</li>
+                        </ol>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 8px;">
+                            <strong>Prevention is key!</strong> If you're struggling, get help BEFORE it affects your SAP. Use tutoring, talk to professors, visit counseling.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">💡 Smart strategies to protect your SAP</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Know the add/drop deadlines</strong><br>
+                                    Early in the semester, you can drop with no W. After that deadline, drops = W on transcript
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Use Pass/No Pass strategically</strong><br>
+                                    Taking a challenging class outside your major? P/NP can protect your GPA (but know the deadline!)
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Get help EARLY</strong><br>
+                                    Free tutoring, study groups, professor office hours - use them BEFORE you're failing
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Start with realistic unit load</strong><br>
+                                    Working full-time? Maybe start with 6-9 units, not 12. Better to succeed than overload and fail
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>Track your progress</strong><br>
+                                    Check your GPA and completion rate after each semester. Don't let it surprise you!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self-Advocacy -->
+        <section>
+            <h2 class="section-header">🗣️ Advocate for Yourself (and Your Friends!)</h2>
+            
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">💪 Don't be afraid to follow up</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>It's okay to feel nervous about following up, but <strong>this is YOUR money</strong>. Don't let it slip away!</p>
+                        <p style="margin-top: 1rem;"><strong>When to follow up:</strong></p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>You submitted your application more than a week ago</li>
+                            <li>You haven't heard back about missing documents</li>
+                            <li>You missed an appointment or deadline</li>
+                            <li>Something doesn't make sense on your award letter</li>
+                            <li>Your situation changed (lost job, family emergency, etc.)</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); border-radius: 8px;">
+                            <strong>Remember:</strong> Financial Aid staff are there to HELP you. It's literally their job. You're not bothering them - you're doing what you're supposed to do!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🤝 Help your friends get their money too!</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Many students miss out because they don't know what's available. <strong>Be the friend who shares knowledge!</strong></p>
+                        <p style="margin-top: 1rem;"><strong>Ways to help:</strong></p>
+                        <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                            <li>Share this page with classmates</li>
+                            <li>Offer to fill out applications together</li>
+                            <li>Post about deadlines in group chats</li>
+                            <li>Correct myths when you hear them</li>
+                            <li>Share your success story (when you get that $10K!)</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(20, 184, 166, 0.08); border-left: 4px solid var(--accent-teal); border-radius: 8px;">
+                            <strong>When students support each other, everyone wins!</strong> Financial aid isn't a competition - there's enough for everyone who qualifies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Wellness Journey -->
+        <section id="financial-wellness">
+            <h2 class="section-header">🚀 Your Journey to Financial Wellness Starts HERE</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Getting financial aid isn't just about paying for college - it's your first step toward building real wealth and financial freedom.</p>
+
+            <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(139, 92, 246, 0.08)); border: 2px solid var(--primary-blue); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;">
+                <h3 style="font-family: 'Unbounded', sans-serif; font-size: 1.8rem; color: var(--deep-navy); margin-bottom: 1.5rem; text-align: center;">💡 Think Bigger: Financial Aid as Your Launchpad</h3>
+                <p style="font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto;">
+                    Every dollar of financial aid you receive is a dollar you DON'T have to earn, borrow, or stress about. That's money you can use to build your future, not just survive college. This is where your wealth-building journey begins.
+                </p>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">💰 The Real Power of Financial Aid: Building Your First Emergency Fund</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p><strong>Here's the game-changer most students miss:</strong></p>
+                        <p style="margin-top: 1rem;">If you get $10,000 in financial aid and your actual school expenses are $6,000, you have a <span class="highlight">$4,000 opportunity</span> to change your financial life.</p>
+                        
+                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); border-radius: 12px;">
+                            <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">What if you saved that $4,000 instead of spending it?</p>
+                            <ul style="margin-left: 2rem;">
+                                <li><strong>Emergency fund = Peace of mind</strong><br>Car breaks down? Medical emergency? You're covered. No stress, no credit card debt.</li>
+                                <li style="margin-top: 0.5rem;"><strong>Freedom to take opportunities</strong><br>Unpaid internship? Study abroad? Research position? You can say YES.</li>
+                                <li style="margin-top: 0.5rem;"><strong>No debt trap</strong><br>You won't need to put unexpected expenses on credit cards at 21% interest.</li>
+                                <li style="margin-top: 0.5rem;"><strong>Compound interest starts working for YOU</strong><br>Invest that money and let time do the heavy lifting.</li>
+                            </ul>
+                        </div>
+
+                        <p style="margin-top: 1.5rem; font-weight: 700; font-size: 1.1rem;">Bottom line: Financial aid isn't just "school money" - it's your chance to start building wealth RIGHT NOW.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">📈 Your Financial Order of Operations: Community College Student Reality Edition</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p>Traditional financial advice doesn't fit community college students. You're not fresh out of high school with no responsibilities. <strong>67% of you work while in school, 20% support parents financially, 13% have children.</strong> Here's a Financial Order of Operations built for YOUR reality:</p>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--alert-red); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--alert-red); font-family: 'Unbounded', sans-serif;">1</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Secure Basic Needs FIRST</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); font-weight: 700; margin-bottom: 0.5rem;">Food, Housing, Transportation, Childcare</p>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Why this is #1:</strong> Research shows <span class="highlight">49% of community college students are food insecure, 50% face housing challenges, and 25% of student parents miss class due to childcare issues.</span> You can't focus on school if you're hungry, homeless, or worried about your kids. This isn't optional - it's survival.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Action steps:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Apply for CalFresh/SNAP food benefits</li>
+                                    <li>Use campus food pantries (no shame - they exist for you!)</li>
+                                    <li>Look into housing assistance programs</li>
+                                    <li>Apply for childcare subsidies if you have kids</li>
+                                    <li>Get reliable transportation figured out (bus pass, carpool, campus services)</li>
+                                </ul>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--primary-blue); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--primary-blue); font-family: 'Unbounded', sans-serif;">2</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Get ALL Your Financial Aid</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Why second?</strong> This is FREE MONEY with zero work required after the application. <span class="highlight">52% of eligible students don't apply because they think they won't qualify.</span> 30 minutes of work = potentially $10,000+/year. After securing your immediate basic needs, this is the highest-ROI action you can take.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Action steps:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Complete FAFSA/CADAA (even if you think you won't qualify)</li>
+                                    <li>Apply for CCPG tuition waiver</li>
+                                    <li>Check Free College eligibility</li>
+                                    <li>Apply for Promise, EOPS, TRiO programs</li>
+                                    <li>Search for scholarships (many go unclaimed!)</li>
+                                </ul>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--warm-orange); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--warm-orange); font-family: 'Unbounded', sans-serif;">3</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Build a Tiny Emergency Buffer ($300-500)</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Why this amount?</strong> We're being realistic. <span class="highlight">59% of community college students fell behind on bills last year.</span> You need SOMETHING to break the crisis cycle, but we're not asking you to save $1,000 when you're already stressed. Start small and build up.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>What this covers:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Car repair so you don't miss class/work</li>
+                                    <li>Unexpected medical bill</li>
+                                    <li>Emergency childcare</li>
+                                    <li>Broken phone/laptop (you need these for school!)</li>
+                                    <li>One month's rent if you lose work hours</li>
+                                </ul>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>How to build it:</strong> Use refund from financial aid, work-study earnings, or save $25-50/month.</p>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--accent-teal); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--accent-teal); font-family: 'Unbounded', sans-serif;">4</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Stop the Bleeding: Address Predatory Debt</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Focus on toxic debt:</strong> Payday loans (400% APR), rent-to-own schemes, credit cards (20%+ interest). These destroy wealth before you can even start building it. <span class="highlight">71% of community college students experienced financial difficulty while enrolled.</span> Much of that is interest compounding against them.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Strategy:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Focus on highest interest rate first (avalanche method)</li>
+                                    <li>Pay minimum on everything else</li>
+                                    <li>Use any leftover financial aid for this if you have basic needs covered</li>
+                                    <li>Get free financial coaching at SparkPoint</li>
+                                    <li>DON'T ignore it - debt doesn't go away</li>
+                                </ul>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--soft-purple); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--soft-purple); font-family: 'Unbounded', sans-serif;">5</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Optimize Your Work-School Balance</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>The reality:</strong> <span class="highlight">43% of working community college students work 40+ hours/week, and 25% have multiple jobs.</span> But research shows working more than 15-20 hours/week hurts retention and grades. Financial aid can help you work LESS and study MORE.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Smart moves:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Use financial aid to reduce work hours if possible</li>
+                                    <li>Consider Federal Work-Study (on-campus, flexible, looks good on resume)</li>
+                                    <li>If you must work full-time, take fewer units but stay enrolled</li>
+                                    <li>Look for jobs related to your major (30% of CC students don't - that's wasted experience)</li>
+                                    <li>Communicate with employers about school schedule</li>
+                                </ul>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--success-green); border-radius: 12px; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--success-green); font-family: 'Unbounded', sans-serif;">6</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Finish Your Degree/Certificate</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Why this is critical:</strong> <span class="highlight">59% of students considered dropping out due to financial stress.</span> But dropping out without a credential leaves you with debt and no degree - the worst of both worlds. Your degree/certificate is your biggest financial asset.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Completion strategies:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Take realistic course loads (it's okay to go part-time if working)</li>
+                                    <li>Use free tutoring BEFORE you're failing</li>
+                                    <li>Stay in touch with counselors and create an ed plan</li>
+                                    <li>Know your SAP requirements (2.0 GPA, 67% completion rate)</li>
+                                    <li>If you need to stop out, have a plan to come back</li>
+                                </ul>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: white; border: 2px solid var(--primary-blue); border-radius: 12px;">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 2rem; font-weight: 800; color: var(--primary-blue); font-family: 'Unbounded', sans-serif;">7</span>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.3rem; color: var(--deep-navy); margin: 0;">Build Bigger Emergency Fund & Start Investing</h4>
+                                </div>
+                                <p style="margin-left: 3.5rem; color: var(--text-light);">
+                                    <strong>Once you have the foundation:</strong> After basic needs are secure, high-interest debt is managed, and you're on track to graduate, THEN focus on building wealth through bigger savings (3-6 months expenses) and investing.
+                                </p>
+                                <p style="margin-left: 3.5rem; color: var(--text-dark); margin-top: 0.5rem;"><strong>Future you will thank you:</strong></p>
+                                <ul style="margin-left: 5rem; color: var(--text-light); font-size: 0.95rem;">
+                                    <li>Even $25/month invested now = $100,000+ by retirement</li>
+                                    <li>Time is your biggest advantage - start small, start now</li>
+                                    <li>Use Roth IRA for flexibility (can withdraw contributions anytime)</li>
+                                    <li>Learn about investing through library books, YouTube, campus workshops</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(37, 99, 235, 0.08); border-left: 4px solid var(--primary-blue); border-radius: 12px;">
+                            <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">🎯 The Community College Reality Check:</p>
+                            <p>This order recognizes you're not a traditional student living in a dorm with parents paying your bills. You have REAL responsibilities - rent, kids, family, full-time work. We start with survival needs, THEN move to wealth building. That's not giving up on your financial future - it's being smart about it.</p>
+                            <p style="margin-top: 1rem;"><strong>Your advantage:</strong> Financial aid can break the cycle. Use it to cover school costs so your work money can build your emergency fund. That buffer is what changes everything.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🎓 Real Student Success Stories: What's Possible</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">See yourself in these scenarios:</p>
+
+                        <div style="background: rgba(20, 184, 166, 0.08); border-left: 4px solid var(--accent-teal); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <p style="font-weight: 700; margin-bottom: 0.5rem;">📚 Maria's Story: From Stress to Savings</p>
+                            <p style="margin-top: 0.5rem;">Maria was working 30 hours/week AND taking 12 units. She got $8,500 in financial aid, which covered tuition, books, AND gave her $3,000 left over. Instead of spending it all, she:</p>
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Built a $1,500 emergency fund</li>
+                                <li>Reduced work hours to 15/week (better grades!)</li>
+                                <li>Used $1,000 for a summer internship (which led to a job offer)</li>
+                                <li>Started investing $50/month</li>
+                            </ul>
+                            <p style="margin-top: 0.5rem; font-weight: 700;">Result: Less stress, better grades, AND building wealth while in school.</p>
+                        </div>
+
+                        <div style="background: rgba(139, 92, 246, 0.08); border-left: 4px solid var(--soft-purple); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <p style="font-weight: 700; margin-bottom: 0.5rem;">💪 James's Story: Debt-Free Graduate</p>
+                            <p style="margin-top: 0.5rem;">James qualified for Pell Grant + Cal Grant + EOPS. Total: $12,000/year. His actual school costs? $7,000/year. He saved the extra $5,000 each year and graduated with:</p>
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>$0 in student loan debt</li>
+                                <li>$10,000 emergency fund</li>
+                                <li>Down payment for a reliable used car</li>
+                                <li>Money for professional clothes and interview travel</li>
+                            </ul>
+                            <p style="margin-top: 0.5rem; font-weight: 700;">Result: Started his career with a head start, not a setback.</p>
+                        </div>
+
+                        <div style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-green); padding: 1.5rem; border-radius: 12px;">
+                            <p style="font-weight: 700; margin-bottom: 0.5rem;">🚀 Your Story: What Will You Do?</p>
+                            <p style="margin-top: 0.5rem;">You have the same opportunity they had. Financial aid + smart choices = financial freedom. The question isn't IF you can do this. The question is: what will YOUR success story look like?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card tip">
+                <div class="faq-question">
+                    <span class="question-text">🧠 Financial Wellness Mindset Shifts</span>
+                    <span class="question-icon">⬇️</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="answer-content">
+                        <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">Change how you think about money, change your life:</p>
+
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="check-icon">🔄</span>
+                                <div>
+                                    <strong>OLD: "I need to work more hours to make more money"</strong><br>
+                                    <strong style="color: var(--success-green);">NEW: "Financial aid lets me work LESS and invest more in my education and future earning power"</strong>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">🔄</span>
+                                <div>
+                                    <strong>OLD: "Extra money = time to treat myself"</strong><br>
+                                    <strong style="color: var(--success-green);">NEW: "Extra money = opportunity to build my emergency fund and start investing"</strong>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">🔄</span>
+                                <div>
+                                    <strong>OLD: "Investing is for rich people"</strong><br>
+                                    <strong style="color: var(--success-green);">NEW: "Investing is HOW people become rich - and I can start with $25"</strong>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">🔄</span>
+                                <div>
+                                    <strong>OLD: "I'll start saving after I graduate"</strong><br>
+                                    <strong style="color: var(--success-green);">NEW: "Every year I wait costs me THOUSANDS in compound interest. I'm starting NOW."</strong>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon">🔄</span>
+                                <div>
+                                    <strong>OLD: "I can't afford to think about retirement"</strong><br>
+                                    <strong style="color: var(--success-green);">NEW: "I can't afford NOT to. $50/month now = $100,000+ by retirement."</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(20, 184, 166, 0.1)); border: 3px solid var(--primary-blue); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; text-align: center;">
+                <h3 style="font-family: 'Unbounded', sans-serif; font-size: 2rem; color: var(--deep-navy); margin-bottom: 1rem;">🎯 Your Financial Wellness Action Plan</h3>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">Ready to turn financial aid into financial freedom? Here's your roadmap:</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--primary-blue);">
+                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--primary-blue); margin-bottom: 0.5rem;">📅 This Week</p>
+                        <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                            <li>Complete FAFSA/CADAA if you haven't</li>
+                            <li>Check your application status</li>
+                            <li>Calculate your expected refund</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--accent-teal);">
+                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--accent-teal); margin-bottom: 0.5rem;">💰 This Month</p>
+                        <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                            <li>Open a savings account for emergencies</li>
+                            <li>Set up automatic transfers ($25-50/month)</li>
+                            <li>Track your spending for 30 days</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--soft-purple);">
+                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--soft-purple); margin-bottom: 0.5rem;">🚀 This Semester</p>
+                        <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                            <li>Build $500-1,000 emergency fund</li>
+                            <li>Learn about investing (library books, YouTube, podcasts)</li>
+                            <li>Visit SparkPoint for free financial coaching</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--success-green);">
+                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--success-green); margin-bottom: 0.5rem;">🎓 By Graduation</p>
+                        <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                            <li>$3,000-5,000 emergency fund</li>
+                            <li>Zero credit card debt</li>
+                            <li>Basic investing account started</li>
+                            <li>Strong financial habits locked in</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem; font-weight: 700; font-size: 1.2rem; color: var(--deep-navy);">
+                    💎 Remember: Financial aid isn't just a way to pay for school.<br>It's your ticket to financial independence.
+                </p>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--warm-orange); border-radius: 12px;">
+                <h4 style="font-family: 'Unbounded', sans-serif; font-size: 1.4rem; color: var(--deep-navy); margin-bottom: 1rem;">📚 Free Financial Wellness Resources at Skyline</h4>
+                <p style="margin-bottom: 1rem;">You don't have to figure this out alone. Take advantage of these FREE resources:</p>
+                <ul style="margin-left: 2rem; line-height: 1.8;">
+                    <li><strong>SparkPoint</strong> - Free one-on-one financial coaching, help with budgeting, credit, and financial planning</li>
+                    <li><strong>EOPS</strong> - Book vouchers, emergency grants, and support services</li>
+                    <li><strong>Library</strong> - Free books on personal finance, investing, and wealth building</li>
+                    <li><strong>Counseling</strong> - Help planning your academic path to maximize earning potential</li>
+                    <li><strong>Career Services</strong> - Internships and jobs that pay while you learn</li>
+                </ul>
+                <p style="margin-top: 1rem; font-weight: 700;">All of these services are FREE. Use them. That's what they're there for!</p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="apply-now" class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Claim Your Money?</h2>
+                <p style="font-size: 1.2rem; margin: 1rem 0; color: white;">Stop reading. Start applying. Your future self will thank you.</p>
+                <p style="font-size: 1.1rem; margin: 1rem 0; color: white;">⏰ 30 minutes of your time = $10,000+ in your pocket</p>
+                <a href="https://skylinecollege.edu/financialaid/contact.php" class="cta-button">Get Started Now →</a>
+                <p style="font-size: 0.95rem; margin-top: 2rem; color: white; opacity: 0.9;">Questions? The Financial Aid Office is here to help!</p>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section>
+            <h2 class="section-header">📚 Helpful Resources</h2>
+            
+            <div class="resources-grid">
+                <a href="https://studentaid.gov/" class="resource-card">
+                    <div class="resource-title">Federal Student Aid</div>
+                    <div class="resource-description">Official FAFSA site with guides, FAQs, and support</div>
+                </a>
+
+                <a href="https://www.csac.ca.gov/" class="resource-card">
+                    <div class="resource-title">CA Student Aid Commission</div>
+                    <div class="resource-description">CADAA info, Cal Grant details, and state aid resources</div>
+                </a>
+
+                <a href="https://immigrantsrising.org/resources-for-undocumented-people/" class="resource-card">
+                    <div class="resource-title">Immigrants Rising</div>
+                    <div class="resource-description">Resources and support for undocumented students</div>
+                </a>
+
+                <a href="https://skylinecollege.edu/financialaid/workshops.php" class="resource-card">
+                    <div class="resource-title">Skyline FA Workshops</div>
+                    <div class="resource-description">Free workshops to help you apply (highly recommended!)</div>
+                </a>
+
+                <a href="https://cash4college.csac.ca.gov/" class="resource-card">
+                    <div class="resource-title">Cash for College</div>
+                    <div class="resource-description">Statewide workshops - find one near you</div>
+                </a>
+
+                <a href="https://skylinecollege.edu/financialaid/satisfactoryacademicprogress.php" class="resource-card">
+                    <div class="resource-title">SAP Information</div>
+                    <div class="resource-description">Full details on staying eligible for aid</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Don't let free money go unclaimed!</p>
+        <p>Questions? Confused? Stuck? <strong>That's normal!</strong> Contact the Financial Aid Office - we're here to help you succeed.</p>
+        
+        <div class="footer-links">
+            <a href="https://skylinecollege.edu/financialaid/contact.php">Contact Financial Aid</a>
+            <a href="https://skylinecollege.edu/financialaid/">Financial Aid Home</a>
+            <a href="https://skylinecollege.edu/">Skyline College</a>
+        </div>
+
+        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">© Skyline College Financial Aid</p>
+    </footer>
+
+    <script>
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.faq-card, .resource-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
